@@ -12,6 +12,12 @@ module Types
     field :coordinates, Types::CoordinatesType, null: false
     field :publication_years, [Int], null: false, camelize: false
 
+    field :errors, [Types::ErrorType], null: true
+
+    def errors
+      object.errors.map { |e| { field_name: e.attribute, errors: [e.attribute] } }
+    end
+
     def full_name
       "#{object.first_name} #{object.last_name}"
     end
