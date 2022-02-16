@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2022_02_09_141100) do
+ActiveRecord::Schema.define(version: 2022_02_16_091541) do
 
   create_table "authors", force: :cascade do |t|
     t.string "first_name", null: false
@@ -22,6 +22,22 @@ ActiveRecord::Schema.define(version: 2022_02_09_141100) do
     t.index ["first_name"], name: "index_authors_on_first_name"
     t.index ["last_name"], name: "index_authors_on_last_name"
     t.index ["year_of_birth"], name: "index_authors_on_year_of_birth"
+  end
+
+  create_table "sessions", force: :cascade do |t|
+    t.integer "user_id"
+    t.string "key"
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+  end
+
+  create_table "users", force: :cascade do |t|
+    t.string "email", null: false
+    t.string "password_digest", null: false
+    t.boolean "is_superadmin", default: false
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.index ["email"], name: "index_users_on_email"
   end
 
 end
