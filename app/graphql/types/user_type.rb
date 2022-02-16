@@ -7,5 +7,9 @@ module Types
     field :id, ID, null: true
     field :email, String, null: false
     field :is_superadmin, Boolean, null: false
+
+    def self.visible?(context)
+      !!context[:current_user]
+    end
   end
 end

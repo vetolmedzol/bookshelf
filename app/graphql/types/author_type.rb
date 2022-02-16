@@ -14,6 +14,11 @@ module Types
 
     field :errors, [Types::ErrorType], null: true
 
+    # Just an example of overriding a useful method
+    # def self.authorized?(object, context)
+    #   !object.is_alive?
+    # end
+
     def errors
       object.errors.map { |e| { field_name: e.attribute, errors: [e.attribute] } }
     end
