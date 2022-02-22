@@ -8,6 +8,5 @@ module Types
     argument :last_name, String, required: false, camelize: false
     argument :year_of_birth, Int, required: false, camelize: false
     argument :is_alive, Boolean, required: false, camelize: false
-
   end
 end
